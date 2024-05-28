@@ -2,14 +2,16 @@
 #include <conio.h>
 #include <thread>
 #include <chrono>
+#include <windows.h>
 #include <cstdlib>
 #include <conio.h>
 #include "animasi.h"
 #include "class.h"
 using namespace std;
 
-void delay(int x){
-    this_thread::sleep_for(chrono::milliseconds(x));
+void clrl() {
+    cout << "\033[A"; //cursor ke atas
+    cout << "\033[2K"; //menghapus satu baris
 }
 
 void char_delay(const string& teks, int ms, int x) {
@@ -19,6 +21,7 @@ void char_delay(const string& teks, int ms, int x) {
 
     for (char c : teks) {
         cout << c << flush; 
+        Beep(1000,10);
         delay(ms); 
     } 
     
@@ -53,26 +56,31 @@ void teks(){
 int main(){
     system("cls");
     char option;
-    //intro();
+    intro();
 
     player karakter;
     string prev_nama = "";
     while(true){
+    introducer1();
     char_delay("Bagaimana saya memanggil anda?\n",10,0);
     cin >> karakter.nama;
+    delay(500);
     
     if (karakter.nama == prev_nama){
-        char_delay("...",10,1);getch();
-        char_delay("\nKamu bercanda?",10,1);getch();
-        char_delay("\nBukankah nama ini sama dengan yang sebelumnya???",10,1);getch();
-        char_delay("...",10,1);getch();
-        char_delay("...",10,1);getch();
-        char_delay("...",10,1);getch();
+        system("cls");
+        introducer3();
+        char_delay("\n...",10,0);getch();clrl();
+        char_delay("\nKamu bercanda?",10,0);getch();clrl();
+        char_delay("\nBukankah nama ini sama dengan yang sebelumnya???",10,0);getch();clrl();
+        char_delay("\n...",10,1);getch();
+        char_delay("\n...",10,1);getch();
+        char_delay("\n...",10,1);getch();
         char_delay("\nBaiklah...",20,1);getch();
     }
     prev_nama = karakter.nama;
 
     system("cls");
+    introducer2();
     char_delay("Hi, ", 10,0);delay(1000);
     char_delay(karakter.nama + "...",200,0);
     delay(1000);
