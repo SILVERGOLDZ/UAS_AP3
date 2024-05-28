@@ -21,7 +21,7 @@ void char_delay(const string& teks, int ms, int x) {
 
     for (char c : teks) {
         cout << c << flush; 
-        Beep(1000,10);
+        Beep(750,ms);
         delay(ms); 
     } 
     
