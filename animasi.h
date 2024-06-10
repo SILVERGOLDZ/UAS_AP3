@@ -15,7 +15,7 @@ void char_delay(const string& teks, int ms, int x, int y) {
 
     for (char c : teks) {
         cout << c << flush; 
-        Beep(650,ms);
+        Beep(620,ms);
         delay(ms); 
     } 
     if (y == 1){
@@ -67,8 +67,6 @@ const char* monsterFrames[] = {//0
 
 
 
-
-
                                                                  /\
                                                                  ||
                                                    ____ (((+))) _||_
@@ -89,8 +87,6 @@ const char* monsterFrames[] = {//0
 
 )",//2
     R"(
-
-
 
 
 
@@ -125,8 +121,6 @@ const char* monsterFrames[] = {//0
 
 
 
-
-
                                                                  /\
                                                                  ||
                                                    ____ (((+))) _||_
@@ -147,8 +141,6 @@ const char* monsterFrames[] = {//0
 
 )",//4
     R"(
-
-
 
 
 
@@ -175,8 +167,6 @@ const char* monsterFrames[] = {//0
     R"(
 
 
-
-
                                                                  /\
                                                                  ||
                                                    ____ (((+))) _||_
@@ -197,8 +187,6 @@ const char* monsterFrames[] = {//0
 
 )",//6
     R"(
-
-
                                                                  /\
                                                                  ||
                                                    ____ (((+))) _||_
@@ -215,7 +203,21 @@ const char* monsterFrames[] = {//0
                                                         |_____|  
                                                         |_____|
 
-
+)",//7
+    R"(            
+                                                    ____ (((+))) _||_
+                                                   /.--.\       /.||.\
+                                                  /.,   \\     // || \
+                                                 /;`";/\ \\   //  ||  ;\
+                                                 |:   \ \__`:`____||__:|
+                                                 |:    \__ \T/ (xx)(xx)|
+                                                 |:    _/|     |\_\/  :|
+                                                 |:   /  |     |  \   :|
+                                                 |'  /   |     |   \  '|
+                            (((+)))               \_/    |     |    \_/
+                              .-.                        |     |
+                             (x.x)                       |_____|  
+                              |x|                        |_____|
 
 )",
 };
@@ -338,44 +340,66 @@ void introducer3(){
     cout << "       /           \\  \n";
 }
 
-void scary_face1(){
-cout<<"\n          -##%@%%#++*##*++++*++++%#=.    \n";    
-cout<<"        *#*-:+**++++++****=*##===.=*@@=      \n";
-cout<<"       %@%*=%@@@@@@#+*++*%@@@@@@@%==*#@+     \n";
-cout<<"      #@%%@@@@@@@@@@@%#%@@@@@@@@@@@@*#%*     \n";
-cout<<"    .#@@@@@@@@@#@@@@@@##@@@@@%@@@@@@#@@@+    \n";
-cout<<"   *%*-**@@@@@@@@@@@@*  =@@@@@@@@@@@@##*%-   \n";
-cout<<"  =@##@@@@%@@@@@@@*..   -..*@@@%*%%@@@=-*#:  \n";
-cout<<"  ***@@@@@@@@%%%#%#+#-  -@**@%@@@%%@@@@%+#=  \n";
-cout<<"  =%*@@@@@@=*+=#%%@@%%@@#%@%*:=-+%@@@@@@=++  \n";
-cout<<"   #**@@@@@@@@@=: +   :.  :  .=##%@@@@@@+%:  \n";
-cout<<"    =#*+@@@@@@@*##%#***#**+*++%@@@@@@@@*:+   \n";
-cout<<"     .#%=+*@@@@#@@@@@@%%%@@@@@@@@%@@%@##-    \n";
-cout<<"       :@##++*@@@@#*###%%#+=+*%%@@*#%%#:     \n";
-cout<<"        .#**@*:+%@%%@#*#%%%@@@@=-:%@@=       \n";
-cout<<"         .%@=#*:%-+..  : .:.:++.--@@-        \n";
-cout<<"          .@%=-*-@@-= =+.:-%%+-+*%%.         \n";
-cout<<"            %+:=-=@@@%@@@@@@+=*=@@           \n";
-cout<<"             -*.++:*@@@@@@%++==##            \n";
-cout<<"              .%=::=-:-=+=:-===%:            \n";
-cout<<"                *- .*##@#+. :#%.             \n";
-cout<<"                 -+        -%+               \n";
-cout<<"                   :*=:.:+#:                 \n";
-                                    
-}
-
 const char* klass[] = {
     R"(
 
     (Stats is Hidden. Good Luck)
 
-       1. Sword
-        2. Bow
-         3. Shield
+       1. Sword                                            2. Bow                                                             3. Shield
+           )                  |                                                       |                    |
+              (               |                                                        \.                  |
+            '    }            |                                                        /|.                 |
+          (    '              |                                                      /  `|.                |
+         '      (             |                                                    /     |.                |         _________________________ 
+          )  |    )           |                                                  /       |.                |        |<><><>     |  |    <><><>|
+        '   /|\    `          |                                                /         `|.               |        |<>         |  |        <>|
+       )   / | \  ` )         |                                              /            |.               |        |           |  |          |
+      {    | | |  {           |                                            /              |.               |        |  (______ <\-/> ______)  |
+     }     | | |  .           |                                          /                |.               |        |  /_.-=-.\| " |/.-=-._\  | 
+      '    | | |    )         |     __                                 /                  `|.              |        |   /_    \(o_o)/    _\   |
+     (    /| | |\    .        |      -\                              /                     |.              |        |    /_  /\/ ^ \/\  _\    |
+      .  / | | | \  (         |        \\                          /                       |.              |        |      \/ | / \ | \/      |
+    }    \ \ | / /  .         |          \\                      /                         |.              |        |_______ /((( )))\ _______|
+     (    \ `-' /    }        |           \|                   /                           |\              |        |      __\ \___/ /__      |
+     '    / ,-. \    '        |             \#####\          /                             ||              |        |--- (((---'   '---))) ---|
+      }  / / | \ \  }         |         ==###########>     /                               ||\             |        |           |  |          |
+     '   \ | | | /   }        |          \##==      \    /                                 ||              |        |           |  |          |
+      (   \| | |/  (          |     ______ =       =|__/___                                ||              |        :           |  |          :     
+        )  | | |  )           | ,--' ,----`-,__ ___/'  --,-`-==============================##==========>   |         \<>        |  |       <>/      
+        .  | | |  '           |\               '        ##_______ ______   ______,--,____,=##,__           |          \<>       |  |      <>/       
+           J | L              | `,    __==    ___,-,__,--'#'  ==='      `-'              | ##,-/           |           \<>      |  |     <>/       
+     /|    J_|_L    |\        |   `-,____,---'       \####\              |        ____,--\_##,/            |            `\<>    |  |   <>/'         
+     \ \___/ o \___/ /        |       #_              |##   \  _____,---==,__,---'         ##              |              `\<>  |  |  <>/'         
+      \_____ _ _____/         |        #              ]===--==\                            ||              |                `\<>|  |<>/'         
+            |-|               |        #,             ]         \                          ||              |                  `-.  .-`           
+            |-|               |         #_            |           \                        ||              |                    '--'
+            |-|               |          ##_       __/'             \                      ||              |
+           ,'-'.              |           ####='     |                \                    |/              |
+           '---'              |            ###       |                  \                  |.              |
+
     )"
 };
 
 
 void prologue(){
-    scary_face1();
+    delay(1000);
+    system("cls");
+    char_delay("Di dalam labirin gelap yang dipenuhi dengan gemuruh, langkah seorang pahlawan terdengar gemetar. \n",2,0,0);
+    char_delay("Namun, tidak ada ketakutan dalam hatinya, hanya tekad yang berkobar-kobar. Di tangannya, senjata \n",2,0,0);
+    char_delay("legendaris berkilau dalam redupnya cahaya obor yang ia bawa.\n\n\n",2,0,1);
+    char_delay("Pahlawan itu adalah seorang yang telah melewati banyak ujian, mengalahkan setiap rintangan yang ia \n",2,0,0);
+    char_delay("temui dalam perjalanan panjangnya. Namun, satu rintangan terakhir masih berdiri di hadapannya, \n",2,0,0);
+    char_delay("menantangnya dengan kegelapan yang menakutkan.\n\n\n",2,0,1);
+    char_delay("Dalam dada yang dipenuhi dengan keberanian dan tekad, pahlawan itu terus maju, melewati lorong-\n",2,0,0);
+    char_delay("lorong gelap yang penuh dengan bahaya. Setiap langkahnya merupakan sebuah penantian akan \n",2,0,0);
+    char_delay("keberanian dan keteguhan hatinya.\n\n\n",2,0,1);
+    char_delay("Di ujung labirin, ia melihatnya: boss terakhir yang begitu menakutkan. Sebuah makhluk yang mengerikan, \n",2,0,0);
+    char_delay("dengan kekuatan yang melampaui segala yang pernah ia temui sebelumnya. Namun, di matanya yang \n",2,0,0);
+    char_delay("bersinar dengan semangat, tidak ada ruang bagi keraguan.\n\n\n",2,0,1);
+    char_delay("Dengan langkah mantap, pahlawan itu memegang erat pedangnya, siap untuk menghadapi takdirnya. Ia \n",2,0,0);
+    char_delay("tahu bahwa ini adalah saatnya, saat untuk menunjukkan keberaniannya, kekuatannya, dan tekadnya yang\n",2,0,0);
+    char_delay("tak tergoyahkan. Ia adalah pahlawan yang siap melawan, siap untuk menaklukkan kegelapan terakhir \n",2,0,0);
+    char_delay("yang menghalangi jalan menuju kemenangan.\n",2,0,1);
+    delay(1000);
+    system("cls");
 }

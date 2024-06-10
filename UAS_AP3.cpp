@@ -14,35 +14,25 @@ void clrl() {
     cout << "\033[2K"; //menghapus satu baris
 }
 
-void animasikan(string text, int n, int j)
+void animasikan()
 {
     
-    while (true) {
-        for (int i = n ; i <= j; ++i) {
-            system("cls");
-            cout << monsterFrames[i] << "\n" << text << endl;
-            delay(700);
-        }
+    for (int i = 0; i < 6; ++i) {
+        system("cls");
+        cout << monsterFrames[i] << "\n"<< endl;
+        delay(700);
     }
-
- 
 }
 
 
-void intro(){
-    const char* array_string[] = {"\n\n\n\n\n\n\n\n\n\n\n                                               Tips!",
-                                     "\n\n                       Tekan enter untuk melanjutkan setiap dialog yang muncul",
-                                     "\n\n\n\n\n\n\n\n\n\n\n                                         ",
-                                     "selamat bermain!"};
 
-    int arraySize = sizeof(array_string) / sizeof(array_string[0]);
-    
-    char_delay(array_string[0], 10,0,0);
+void intro(){
+    char_delay("\n\n\n\n\n\n\n\n\n\n\n                                               Tips!", 10,0,0);
     delay(1000);
-    char_delay(array_string[1],10,0,1);
+    char_delay("\n\n                       Tekan enter untuk melanjutkan setiap dialog yang muncul",10,0,1);
     system("cls");
-    char_delay(array_string[2],10,0,0);
-    char_delay(array_string[3],100,0,1);
+    char_delay("\n\n\n\n\n\n\n\n\n\n\n                                         ",10,0,0);
+    char_delay( "selamat bermain!",100,0,1);
     system("cls");
 }
 
@@ -50,18 +40,17 @@ void intro(){
 int main(){
     system("cls");
     pemilihan opsi;
-    opsi.option;
-    //intro();
+    intro();
 
-    player karakter;
+    Player player;
     string prev_nama = "";
     while(true){
     introducer1();
     char_delay("Bagaimana saya memanggil anda?\n",10,0,0);
-    cin >> karakter.nama;
+    cin >> player.nama;
     delay(500);
     
-    if (karakter.nama == prev_nama){
+    if (player.nama == prev_nama){
         system("cls");
         introducer3();
         char_delay("\n...",10,0,1);clrl();
@@ -72,12 +61,13 @@ int main(){
         char_delay("\n...",10,1,1);
         char_delay("\nBaiklah...",20,1,1);
     }
-    prev_nama = karakter.nama;
+    
+    prev_nama = player.nama;
 
     system("cls");
     introducer2();
     char_delay("Hi, ", 10,0,0);delay(1000);
-    char_delay(karakter.nama + "...",200,0,0);
+    char_delay(player.nama + "...",200,0,0);
     delay(1000);
     balik1:
     char_delay("\nApakah nama ini sudah benar?(y/n)",10,0,0);
@@ -102,7 +92,7 @@ int main(){
     
     if (opsi.option == 'y'){
         system("cls");
-        //prologue()
+        prologue();
     }
 
     else if (opsi.option =='n'){
@@ -114,30 +104,27 @@ int main(){
     }
 
     ///////////////////////////////////////////////////////
-    boss monster;
-    player chara;
-
     balik3:
     char_delay("Pick your class...",10,1,0);
     cout << klass[0];
     opsi.option = getch();
     if (opsi.option == '1'){
-        karakter.senjata = "sword";
-        karakter.x = 2000;
-        karakter.y = 8000;
-        karakter.hp = 1000;
+        player.senjata = "sword";
+        player.x = 5000;
+        player.y = 19000;
+        player.hp = 12000;
     }
     else if(opsi.option == '2'){
-        karakter.senjata = "bow";
-        karakter.x = 1000;
-        karakter.y = 3000;
-        karakter.hp = 700;
+        player.senjata = "bow";
+        player.x = 3000;
+        player.y = 15000;
+        player.hp = 9000;
     }
     else if (opsi.option == '3'){
-        karakter.senjata = "shield";
-        karakter.x = 500;
-        karakter.y = 2000;
-        karakter.hp = 500;
+        player.senjata = "shield";
+        player.x = 2000;
+        player.y = 13000;
+        player.hp = 20000;
     }
     else{
         char_delay("\nError! Pilihan hanya 1 sampai 3... (press enter to continue)",10,1,1);
@@ -154,12 +141,79 @@ int main(){
     delay(2000);
 
     ////////////////////////// game on /////////////////////////////
+    Boss boss;
+    bar health;
     cout << monsterFrames[0];
         char_delay("Manusia bodoh...", 10, 0, 1);
         system("cls");
     cout << monsterFrames[0];
         char_delay("Biar aku perlihatkan rasanya keputusasaan...!", 10, 0, 1);
         system("cls");
-    animasikan("", 0, 6);
+    animasikan();
+    hp_interface(health.hp_ui);
 
+srand(time(NULL));
+
+
+    // Setup player
+
+
+
+    cout << "\n\nBattle Start!" << endl;
+
+
+    while (player.hp > 0 && boss.hp > 0) {
+        // Player's turn
+        system("cls");
+        cout << monsterFrames[6];
+        hp_interface(health.hp_ui);
+
+        cout << "Player's turn to attack!" << endl;
+        waitForUserInput();
+        system("cls");
+        int player_damage = player.attack();
+        int temp_mons_hp = boss.hp;
+        boss.hp -= player_damage;
+        float hitung = boss.hp / temp_mons_hp;
+        health.hp_ui *= hitung;
+
+
+        cout << monsterFrames[6];
+        hp_interface(health.hp_ui);
+        
+        cout << "Player dealt " << player_damage << " damage to the boss!" << endl;
+
+        if (boss.hp <= 0) {
+            cout << "Boss defeated!" << endl;
+            break;
+        }
+
+        // Display status
+        displayStatus(player, boss);
+
+        // Boss's turn
+        cout << "Boss's turn to attack!" << endl;
+        waitForUserInput();
+        int boss_damage = boss.attack();
+        player.hp -= boss_damage;
+        cout << "Boss dealt " << boss_damage << " damage to the player!" << endl;
+
+        if (player.hp <= 0) {
+            cout << "Player defeated!" << endl;
+            break;
+        }
+
+        // Display status
+        displayStatus(player, boss);
+        waitForUserInput();
+    }
+
+    if (player.hp > 0) {
+        system("cls");
+        cout << monsterFrames[7]<< "Congratulations, " << player.nama << "! You have defeated the boss!" << endl;
+    } else {
+        cout << "Game Over! The boss has defeated you." << endl;
+    }
+
+    return 0;
 }
